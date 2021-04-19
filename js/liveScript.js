@@ -2,7 +2,6 @@ window.addEventListener("load", function () {
 
     //inserimento variabili
     var ingredient = document.querySelectorAll(".ingredient [type='checkbox']");
-    var ingredientPrice = document.getElementById("price");
     var button = document.getElementById("button");
     var burgerName = document.getElementById("name");
     var defaultPrice = 50;
@@ -23,17 +22,18 @@ window.addEventListener("load", function () {
 
             var sommaTotale = defaultPrice + prezzoAggiunta
 
-            //coupon per sconto
-            var coupon = document.getElementById("coupon")
+
+       //inserimento coupon sconto     
             var couponValid = ["burger2021", "burgerapril", "burgerdiscount"]
-            var discountCoupon = 0.15;
-            //verificare il coupon
-            if (couponValid.includes(coupon.value) === true) {
-                sommaTotale -= sommaTotale * discountCoupon;
+
+            var discountCoupon = document.getElementById("coupon");
+
+            //condizione di validità sconto -5
+            for (var i = 0; i < couponValid.length; i++) {
+
+                var coupon = couponValid[i];
+
+                if (coupon === discountCoupon.value) {
+                    sommaTotale = sommaTotale - 5;
+                }
             }
-
-        }
-    })
-})
-    
-
