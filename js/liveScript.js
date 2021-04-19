@@ -19,21 +19,22 @@ window.addEventListener("load", function () {
                     prezzoAggiunta += parseInt(ingredients.value)
                 }
             }
+        }
 
-            var sommaTotale = defaultPrice + prezzoAggiunta
+        var sommaTotale = defaultPrice + prezzoAggiunta
+        //inserimento coupon sconto     
+        var couponValid = ["burger2021", "burgerapril", "burgerdiscount"]
 
+        var discountCoupon = document.getElementById("coupon");
 
-       //inserimento coupon sconto     
-            var couponValid = ["burger2021", "burgerapril", "burgerdiscount"]
+        //condizione di validità sconto -5
+        for (var i = 0; i < couponValid.length; i++) {
+            var coupon = couponValid[i];
 
-            var discountCoupon = document.getElementById("coupon");
-
-            //condizione di validità sconto -5
-            for (var i = 0; i < couponValid.length; i++) {
-
-                var coupon = couponValid[i];
-
-                if (coupon === discountCoupon.value) {
-                    sommaTotale = sommaTotale - 5;
-                }
+            if (coupon === discountCoupon.value) {
+                sommaTotale = sommaTotale - 5;
             }
+            document.getElementById("price").innerHTML = sommaTotale;
+        }
+    })
+})
